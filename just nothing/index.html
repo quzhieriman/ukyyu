@@ -1,22 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>SPM Attendance Login</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPM Attendance System</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <main class="page">
+    <section class="card" id="loginCard">
+      <h1>SPM Global Exam Attendance</h1>
+      <p class="subtitle">School Login Portal</p>
 
-<div class="container">
-  <h2>SPM National Examination Attendance</h2>
+      <label for="schoolCode">School Code</label>
+      <input type="text" id="schoolCode" placeholder="e.g. SPM-001" autocomplete="off" />
 
-  <input type="text" id="schoolCode" placeholder="School Code">
-  <input type="password" id="password" placeholder="Password">
-  <button onclick="login()">Login</button>
+      <label for="schoolPassword">Password</label>
+      <input type="password" id="schoolPassword" placeholder="Enter school password" />
 
-  <p id="error"></p>
-</div>
+      <button id="loginBtn">Log In</button>
+      <p id="loginMessage" class="message"></p>
 
-<script type="module" src="firebase.js"></script>
-<script type="module" src="login.js"></script>
+      <details class="hint">
+        <summary>Demo school credentials</summary>
+        <ul>
+          <li>SPM-001 / putrajaya2026</li>
+          <li>SPM-002 / johorbahru!24</li>
+          <li>SPM-003 / sarawak#spm</li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="card hidden" id="dashboardCard">
+      <div class="dashboard-header">
+        <div>
+          <h2 id="dashboardSchoolName"></h2>
+          <p class="subtitle" id="dashboardSchoolCode"></p>
+        </div>
+        <button id="logoutBtn" class="secondary">Log Out</button>
+      </div>
+
+      <h3>Candidate Attendance (1 - 10)</h3>
+      <p class="small-note">Tick <strong>Present</strong> for students who attended. Unticked students are marked as absent.</p>
+
+      <form id="attendanceForm">
+        <div id="studentRows"></div>
+        <button type="submit">Save Attendance</button>
+      </form>
+
+      <p id="attendanceMessage" class="message"></p>
+
+      <section id="attendanceSummary" class="summary hidden"></section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
 </body>
 </html>

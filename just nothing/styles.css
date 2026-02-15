@@ -1,113 +1,182 @@
-/* GENERAL */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #eef4ff;
+  --card: #ffffff;
+  --primary: #1b4ddb;
+  --primary-dark: #0f338f;
+  --text: #16213a;
+  --muted: #63708a;
+  --danger: #d7263d;
+  --success: #1b8a3c;
+  --line: #d8deeb;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(circle at top, #f6f9ff, #dfe9ff 55%, #ceddff);
+  color: var(--text);
 }
 
-/* MAIN CONTAINER */
-.container {
-    background: #ffffff;
-    width: 420px;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-    text-align: center;
+.page {
+  width: min(760px, 95vw);
+  margin: 32px auto;
 }
 
-/* HEADINGS */
-h2 {
-    margin-bottom: 10px;
-    color: #003366;
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 14px 32px rgba(21, 45, 102, 0.12);
 }
 
+.hidden {
+  display: none;
+}
+
+h1,
+h2,
 h3 {
-    margin-bottom: 20px;
-    color: #555;
+  margin: 0 0 10px;
 }
 
-/* INPUTS */
+.subtitle {
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+
+.small-note {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin: 0 0 14px;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
 input[type="text"],
 input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 14px;
+  width: 100%;
+  margin-top: 6px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  font-size: 1rem;
 }
 
-/* BUTTONS */
 button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 6px;
-    background-color: #003366;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s ease;
+  background: var(--primary);
+  border: none;
+  color: #fff;
+  padding: 11px 16px;
+  border-radius: 8px;
+  margin-top: 14px;
+  cursor: pointer;
+  font-weight: 700;
 }
 
 button:hover {
-    background-color: #0055aa;
+  background: var(--primary-dark);
 }
 
-/* ERROR MESSAGE */
-#error {
-    color: red;
-    margin-top: 10px;
+button.secondary {
+  background: #f4f6fb;
+  color: var(--text);
+  border: 1px solid var(--line);
+  margin-top: 0;
 }
 
-/* STUDENT LIST */
-#studentList {
-    margin-top: 15px;
-    text-align: left;
+button.secondary:hover {
+  background: #e8edf8;
 }
 
-#studentList div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px;
-    margin-bottom: 5px;
-    border-bottom: 1px solid #eee;
+.message {
+  min-height: 1.2em;
+  margin-top: 12px;
+  font-weight: 700;
 }
 
-/* CHECKBOX */
-input[type="checkbox"] {
-    transform: scale(1.2);
+.message.error {
+  color: var(--danger);
 }
 
-/* STATUS MESSAGE */
-#status {
-    margin-top: 15px;
-    font-weight: bold;
-    color: green;
+.message.success {
+  color: var(--success);
 }
 
-/* ADMIN REPORT */
-#report {
-    margin-top: 20px;
-    text-align: left;
-    max-height: 300px;
-    overflow-y: auto;
+.hint {
+  margin-top: 18px;
+  color: var(--muted);
 }
 
-#report div {
-    background: #f4f4f4;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 6px;
+.hint ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
+}
+
+#studentRows {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.student-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 110px;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.student-row:last-child {
+  border-bottom: none;
+}
+
+.student-index {
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.student-name {
+  font-weight: 700;
+}
+
+.attend-toggle {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.summary {
+  background: #f6f9ff;
+  border: 1px solid #d8e4ff;
+  border-radius: 10px;
+  margin-top: 14px;
+  padding: 14px;
+}
+
+.summary h4 {
+  margin: 0 0 8px;
+}
+
+.summary ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
 }
